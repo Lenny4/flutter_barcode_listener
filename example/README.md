@@ -56,7 +56,9 @@ class _MyHomePageState extends State<MyHomePage> {
         // values only when widget is visible
         child: VisibilityDetector(
           onVisibilityChanged: (VisibilityInfo info) {
-            visible = info.visibleFraction > 0;
+            if (context.mounted) {
+              visible = info.visibleFraction > 0;
+            }
           },
           key: Key('visible-detector-key'),
           child: BarcodeKeyboardListener(
